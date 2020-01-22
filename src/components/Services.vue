@@ -1,5 +1,15 @@
 <template>
     <div>
-        t
+        <p></p>
     </div>
 </template>
+
+<script>
+export default {
+    data() {
+        return {
+                   hej: 'Nils',
+        }
+    },
+}
+</script>
