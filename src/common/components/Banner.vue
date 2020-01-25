@@ -41,17 +41,26 @@
   };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
   .hero-image {
     height: 100%;
     width: 100%;
     margin: 0;
     display: flex;
+    @media (max-width: 767px) {
+      display: block;
+    }
   }
 
   .image-gender {
     width: 50%;
     position: relative;
+    @media (max-width: 767px) {
+      width: 100%;
+      &:first-child {
+        margin-bottom: 50px;
+      }
+    }
   }
 
   .image-gender img {
@@ -64,11 +73,19 @@
     margin: 0 auto;
     top: 50%;
     right: 5%;
+    @media (max-width: 767px) {
+      right: 5%;
+      top: 10%;
+    }
   }
   .info-text-men {
     position: absolute;
     margin: 0 auto;
     top: 50%;
     left: 5%;
+    @media (max-width: 767px) {
+      top: 10%;
+      left: 68%;
+    }
   }
 </style>

@@ -178,13 +178,13 @@
   .delivery .type {
     padding: 2%;
     flex-grow: 1;
-    flex-basis: 30%;
+    flex-basis: 50%;
   }
 
   @media (max-width: 767px) {
     img {
       &:first-child {
-        margin: 0;
+        margin: 0px 0px 10px 0px;
       }
     }
     .delivery {

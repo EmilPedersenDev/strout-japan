@@ -1,28 +1,53 @@
 <template>
-  <div class="background">
-    <div class="menOrWomen" style="text-align: center;">
-      <button @click="menOrWomen('women')">Women</button>
-      <button @click="menOrWomen('men')">Men</button>
-    </div>
-    <div class="container">
-      <div
-        class="product-card"
-        v-for="(product, id) in images"
-        :key="id"
-        @click="routerToProduct(product.id)"
-      >
-        <div class="product-image">
-          <img :src="product.image" height="450px" width="300px" />
-          <img
-            class="img-hover"
-            :src="product.imageHover"
-            height="450px"
-            width="300px"
-          />
+  <div>
+    <div class="background d-none d-sm-block">
+      <div class="menOrWomen" style="text-align: center;">
+        <button @click="menOrWomen('women')">Women</button>
+        <button @click="menOrWomen('men')">Men</button>
+      </div>
+      <div class="container">
+        <div
+          class="product-card"
+          v-for="(product, id) in images"
+          :key="id"
+          @click="routerToProduct(product.id)"
+        >
+          <div class="product-image">
+            <img :src="product.image" height="450px" width="300px" />
+            <img
+              class="img-hover"
+              :src="product.imageHover"
+              height="450px"
+              width="300px"
+            />
+          </div>
+          <div class="product-info">
+            <p style="font-weight">{{product.name}}</p>
+            <p style="color: #9d9da1;">{{product.price}} kr</p>
+          </div>
         </div>
-        <div class="product-info">
-          <p style="font-weight">{{product.name}}</p>
-          <p style="color: #9d9da1;">{{product.price}} kr</p>
+      </div>
+    </div>
+
+    <div class="mobile d-block d-sm-none">
+      <div class="button-wrapper-mobile">
+        <button @click="menOrWomen('women')">Women</button>
+        <button @click="menOrWomen('men')">Men</button>
+      </div>
+      <div class="mobile-container">
+        <div
+          class="mobile-product-card"
+          v-for="(product, id) in images"
+          :key="id"
+          @click="routerToProduct(product.id)"
+        >
+          <div class="product-mobile-image">
+            <img :src="product.image" height="450px" width="300px" />
+          </div>
+          <div class="product-info">
+            <p style="font-weight">{{product.name}}</p>
+            <p style="color: #9d9da1;">{{product.price}} kr</p>
+          </div>
         </div>
       </div>
     </div>
@@ -109,10 +134,9 @@
     text-align: center;
     transform: translateY(55%);
   }
-  .menOrWomen button {
+  button {
     margin-right: 30px;
     width: 100px;
-    height: 40px;
     color: #20bf6b !important;
     text-transform: uppercase;
     background-color: Transparent;
@@ -120,6 +144,7 @@
     border: 2px solid #20bf6b !important;
     border-radius: 6px;
     transition: all 0.3s ease 0s;
+    font-size: 14px;
     cursor: pointer;
   }
   .menOrWomen button:hover {
@@ -181,5 +206,23 @@
   }
   .product-info p:last-child {
     opacity: 0.9;
+  }
+
+  .mobile {
+    .button-wrapper-mobile {
+      margin: 20px 0px;
+      text-align: center;
+      button {
+        &:last-child {
+          margin: 0;
+        }
+      }
+    }
+    .mobile-container {
+      width: 100%;
+      .mobile-product-card {
+        text-align: center;
+      }
+    }
   }
 </style>

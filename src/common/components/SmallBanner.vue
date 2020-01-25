@@ -60,7 +60,7 @@
   };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
   @import url("https://fonts.googleapis.com/css?family=Roboto+Condensed");
   body {
     margin: 0;
@@ -72,15 +72,24 @@
     width: 100%;
     background-color: #fff;
     font-family: "Roboto", sans-serif;
+    display: table;
+    @media (max-width: 767px) {
+      height: 0;
+      padding: 50px 0px;
+    }
   }
   .Banner .wrapper {
     padding: 50px;
+    display: table-cell;
+    vertical-align: middle;
+    @media (max-width: 767px) {
+      padding: 0px;
+    }
   }
   .Header h1 {
-    margin: 0 auto;
+    margin: 0 auto 50px auto;
     text-align: center;
     font-size: 48px;
-    transform: translateY(110%);
     font-weight: 600;
     line-height: 1.3;
     letter-spacing: -0.015em;
@@ -92,10 +101,9 @@
     padding: 2%;
     flex-basis: 16%;
     justify-content: center;
-    transform: translateY(70%);
-  }
-  .cards .card-wrapper {
-    width: 275px;
+    @media (max-width: 767px) {
+      display: block;
+    }
   }
   .cards .card-wrapper .card-image {
     text-align: center;

@@ -5,12 +5,15 @@
       <div class="product-content" v-for="(product, id) in cartItems" :key="id">
         <img :src="product.image" alt />
         <div class="product-text">
+          <div class="delete d-sm-none">
+            <p @click="remove(product,id)">X</p>
+          </div>
           <p>{{product.name}}</p>
           <h6>{{product.price}} kr</h6>
 
           <h6>1 piece</h6>
         </div>
-        <div class="delete">
+        <div class="delete d-none d-sm-block">
           <p @click="remove(product,id)">X</p>
         </div>
       </div>
@@ -75,7 +78,7 @@
   };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
   body {
     height: 100%;
     width: 100%;
@@ -90,14 +93,32 @@
     width: 50%;
     margin: 0 auto;
     text-align: center;
+    @media (max-width: 676px) {
+      width: 100%;
+      h1 {
+        font-size: 30px;
+        margin: 20px;
+      }
+    }
   }
   .product-container {
     width: 100%;
+    @media (max-width: 676px) {
+      width: 300px;
+      margin: 0 auto;
+    }
   }
   .product-content {
     display: flex;
     background: #e3e3e3;
     margin-bottom: 10px;
+    @media (max-width: 676px) {
+      display: block;
+      img {
+        height: 450px !important;
+        width: 300px;
+      }
+    }
   }
 
   .product-content img {
@@ -105,33 +126,54 @@
   }
   .product-content .product-text {
     width: 70%;
+    @media (max-width: 676px) {
+      width: 100%;
+    }
   }
   .product-text {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    @media (max-width: 676px) {
+      margin: 0 auto;
+    }
   }
   .product-text p {
     font-size: 40px;
     opacity: 0.6;
-    flex-grow: 1;
-    transform: translateY(50%);
+    @media (min-width: 676px) {
+      margin-bottom: 10px;
+    }
   }
   .product-text h6 {
     font-size: 24px;
-    margin: 5px 0;
+    margin: 5px 0px;
   }
   .product-text h6:last-child {
     opacity: 0.4;
     margin-bottom: 20px;
+    @media (max-width: 676px) {
+      margin-bottom: 15px;
+    }
   }
   .product-content .delete {
-    width: 15%;
-    transform: translateY(35%);
+    text-align: right;
+    @media (min-width: 676px) {
+      width: 15%;
+      transform: translateY(35%);
+    }
   }
   .product-content .delete p {
     font-size: 25px;
     opacity: 0.6;
+    padding-right: 20px;
+    @media (max-width: 676px) {
+      color: red;
+      padding-right: 10px;
+      padding-top: 10px;
+      font-size: 34px;
+      margin-bottom: 0;
+    }
   }
   .product-content .delete p:hover {
     cursor: pointer;
@@ -152,6 +194,9 @@
     border-radius: 6px;
     transition: all 0.3s ease 0s;
     cursor: pointer;
+    @media (max-width: 676px) {
+      width: 50%;
+    }
   }
   .product-container button:hover {
     color: gray !important;

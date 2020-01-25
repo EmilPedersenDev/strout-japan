@@ -46,7 +46,7 @@
   };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
   .modal-mask {
     position: fixed;
     z-index: 9998;
@@ -66,7 +66,7 @@
 
   .modal-container {
     width: 500px;
-    height: 300px;
+    min-height: 300px;
     margin: 0px auto;
     padding: 20px 30px;
     background-color: #fff;
@@ -74,12 +74,18 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
     transition: all 0.3s ease;
     font-family: Helvetica, Arial, sans-serif;
+    @media (max-width: 767px) {
+      width: 100%;
+    }
   }
 
   .modal-header {
     text-align: center;
     height: 60%;
-    transform: translateY(15%);
+    justify-content: center;
+    svg {
+      margin: 0 auto;
+    }
   }
   .modal-header h3 {
     margin-top: 0;
@@ -88,10 +94,19 @@
   .modal-body {
     height: 20%;
     text-align: center;
+    padding-top: 8px;
+    p {
+      margin-top: 1rem !important;
+      margin-bottom: 1rem;
+    }
   }
   .modal-footer {
     height: 20%;
     text-align: center;
+    justify-content: center;
+    button {
+      margin: 0 auto;
+    }
   }
   .modal-default-button {
     color: #20bf6b !important;

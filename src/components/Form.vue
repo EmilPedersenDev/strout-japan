@@ -80,7 +80,7 @@
           <p class="city-error" v-if="!$v.city.minLength">City format not valid</p>
         </div>
         <div class="payment">
-          <div class="card" @click="payment('card')">
+          <div class="pay-card" @click="payment('card')">
             <p>Card</p>
           </div>
           <div class="swish" @click="payment('swish')">
@@ -149,27 +149,16 @@
             class="error-card-cardnumber-numeric"
             v-if="!$v.card.cardNumber.required  && $v.card.cardNumber.$dirty"
           >Mandatory</p>
-          <p
-            class="error-card-month"
-            v-if="!$v.card.month.numeric"
-          >MM/DD only numbers</p>
-          <p
-            class="error-card-month-obl"
-            v-if="!$v.card.month.minLength"
-          >4 numbers</p>
+          <p class="error-card-month" v-if="!$v.card.month.numeric">MM/DD</p>
           <p
             class="error-card-month-obl"
             v-if="!$v.card.month.required  && $v.card.month.$dirty"
           >Mandatory</p>
-          <p
-            class="error-card-cvc"
-            v-if="!$v.card.cvc.numeric "
-          >CVC only numbers</p>
+          <p class="error-card-cvc" v-if="!$v.card.cvc.numeric ">CVC 3 numbers</p>
           <p
             class="error-card-cvc-obl"
             v-if="!$v.card.cvc.required && $v.card.cvc.$dirty"
           >Mandatory</p>
-          <p class="error-card-cvc-obl" v-if="!$v.card.cvc.minLength">3 numbers</p>
         </div>
         <div class="swish-output" v-else-if="swishActive">
           <input
@@ -184,12 +173,14 @@
           <p v-if="!$v.tel.numeric ">Tel only numbers</p>
         </div>
       </div>
-      <button
-        :disabled="isValid"
-        :class="{'disabled-button': isValid}"
-        type="submit"
-        value="Submit"
-      >Confrim</button>
+      <div class="button-wrapper">
+        <button
+          :disabled="isValid"
+          :class="{'disabled-button': isValid}"
+          type="submit"
+          value="Submit"
+        >Confrim</button>
+      </div>
     </form>
     <div class="instruction">
       <span>*Mandatory fields</span>
@@ -203,7 +194,9 @@
         />
       </template>
       <template slot="body">
-        <p>Do you want to complete the order?</p>
+        <p
+          style="margin-top: 1rem; margin-bottom: 1rem"
+        >Do you want to complete the order?</p>
       </template>
       <template slot="footer">
         <button class="modal-button" @click="openCloseModal('yes')">Ja</button>
@@ -212,8 +205,10 @@
     </Modal>
     <Modal v-if="showSuccessModal">
       <template slot="body">
-        <p>Thanks!</p>
-        <p>Confirmation has been sent to your mail</p>
+        <p style="margin-top: 1rem; margin-bottom: 1rem">Thanks!</p>
+        <p
+          style="margin-top: 1rem; margin-bottom: 1rem"
+        >Confirmation has been sent to your mail</p>
       </template>
     </Modal>
   </div>
@@ -383,7 +378,7 @@
   };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
   html,
   body {
     width: 100%;
@@ -395,36 +390,53 @@
     background: linear-gradient(rgba(255, 255, 255, 0.2)),
       url("~@/assets/forest1.jpg") no-repeat;
     background-size: cover;
-    position: absolute;
-  }
-  h1 {
-    text-align: center;
-    margin: 0;
-    font-size: 60px;
-    transform: translateY(100%);
+    @media (min-width: 676px) {
+      position: absolute;
+    }
+    h1 {
+      text-align: center;
+      font-size: 30px;
+      padding: 30px;
+      @media (min-width: 676px) {
+        font-size: 60px;
+        transform: translateY(100%);
+      }
+    }
   }
   .instruction {
     height: 2%;
+    @media (min-width: 676px) {
+    }
   }
   .instruction span {
     position: absolute;
     left: 31%;
     bottom: 16%;
     color: white;
+    @media (max-width: 676px) {
+      left: 2%;
+      bottom: -1%;
+    }
   }
   .instruction span:last-child {
     position: absolute;
     left: 31%;
     bottom: 14%;
     color: white;
+    @media (max-width: 676px) {
+      left: 2%;
+      bottom: -4%;
+    }
   }
   form {
-    width: 40%;
     height: 600px;
     margin: 0 auto;
-    transform: translateY(20%);
-    background: linear-gradient(rgba(255, 255, 255, 0.3));
     border-radius: 4px;
+    @media (min-width: 676px) {
+      background: linear-gradient(rgba(255, 255, 255, 0.3));
+      width: 40%;
+      transform: translateY(20%);
+    }
   }
   form::before {
     opacity: 0.4;
@@ -460,21 +472,26 @@
   .modal-button:first-child {
     margin-right: 20px;
   }
+  .button-wrapper {
+    text-align: center;
+    margin-top: 60px;
+  }
   form button {
-    position: absolute;
-    bottom: 2%;
     background: #000;
     opacity: 0.7;
-    left: 42%;
     color: #fff !important;
     text-transform: uppercase;
-    /* background-color: Transparent; */
     padding: 10px 20px 10px 20px;
     border: 2px solid #fff !important;
     border-radius: 6px;
     transition: all 0.3s ease 0s;
     cursor: pointer;
     width: 120px;
+    @media (min-width: 676px) {
+      position: absolute;
+      left: 39%;
+      bottom: 2%;
+    }
   }
   form button:hover {
     color: gray !important;
@@ -483,41 +500,52 @@
     transition: all 0.3s ease 0s;
   }
   .form-wrapper {
-    width: 80%;
     height: 80%;
     margin: 0 auto;
-    transform: translateY(10%);
     background: #000;
     border-radius: 4px;
     opacity: 0.6;
+    @media (min-width: 676px) {
+      transform: translateY(10%);
+      width: 80%;
+    }
   }
 
   .name {
     text-align: center;
     height: 15%;
     width: 100%;
+    @media (max-width: 676px) {
+      padding-top: 20px;
+    }
   }
   .name p {
     color: rgb(255, 1, 1);
     font-weight: bold;
     display: inline;
     position: absolute;
-    top: 8%;
-    left: 7%;
+    top: 13%;
+    left: 9%;
     font-size: 12px;
+    @media (max-width: 676px) {
+      top: 34%;
+      left: 9%;
+    }
   }
   .name .p-error {
     color: rgb(255, 1, 1);
     font-weight: bold;
     display: inline;
     position: absolute;
-    top: 8%;
-    left: 52%;
+    top: 13%;
+    left: 51%;
     font-size: 12px;
+    @media (max-width: 676px) {
+      top: 34%;
+      left: 51%;
+    }
   }
   input {
-    transform: translateY(50%);
-    /* border-radius: 3px; */
     border: none;
     border-bottom: 1px solid #fff;
     background: transparent;
@@ -525,6 +553,9 @@
     width: 40%;
     outline: none;
     color: #fff;
+    @media (min-width: 676px) {
+      transform: translateY(50%);
+    }
   }
   input:focus {
     color: #fff;
@@ -546,21 +577,27 @@
     width: 100%;
   }
   .tel-email input {
-    transform: translateY(50%);
     border: none;
     background: transparent;
     padding: 8px;
     outline: none;
     border-bottom: 1px solid #fff;
+    @media (min-width: 676px) {
+      transform: translateY(50%);
+    }
   }
   .tel-email p {
     color: rgb(255, 1, 1);
     font-weight: bold;
     display: inline;
     position: absolute;
-    top: 23%;
+    top: 28%;
     left: 42%;
     font-size: 12px;
+    @media (max-width: 676px) {
+      top: 42%;
+      left: 42%;
+    }
   }
   .tel-email .name-error {
     border-bottom: 1px solid red;
@@ -586,31 +623,45 @@
     font-weight: bold;
     display: inline;
     position: absolute;
-    top: 38%;
-    left: 7%;
+    top: 43%;
+    left: 11%;
     font-size: 12px;
+    @media (max-width: 676px) {
+      top: 53%;
+      left: 11%;
+      font-size: 10px;
+    }
   }
   .adress .postcode-error {
     color: rgb(255, 1, 1);
     font-weight: bold;
     display: inline;
     position: absolute;
-    top: 38%;
-    left: 36%;
+    top: 43%;
+    left: 37%;
     font-size: 12px;
+    @media (max-width: 676px) {
+      top: 53%;
+      left: 37%;
+      font-size: 10px;
+    }
   }
   .adress .city-error {
     color: rgb(255, 1, 1);
     font-weight: bold;
     display: inline;
     position: absolute;
-    top: 38%;
-    left: 65%;
+    top: 43%;
+    left: 64%;
     font-size: 12px;
+    @media (max-width: 676px) {
+      top: 53%;
+      left: 64%;
+      font-size: 10px;
+    }
   }
 
   .adress input {
-    transform: translateY(50%);
     border: none;
     border-bottom: 1px solid #fff;
     background: transparent;
@@ -618,6 +669,9 @@
     outline: none;
     width: 24.3333%;
     margin-right: 2%;
+    @media (min-width: 676px) {
+      transform: translateY(50%);
+    }
   }
   .adress input:first-child {
     margin-right: 2%;
@@ -642,7 +696,7 @@
     justify-content: center;
     margin-top: 10px;
   }
-  .card {
+  .pay-card {
     width: 40%;
     text-align: center;
     cursor: pointer;
@@ -650,13 +704,17 @@
     border-width: 0.01em;
     margin-right: 10px;
   }
-  .card:hover {
+  .pay-card:hover {
     background: linear-gradient(rgba(255, 255, 255, 0.05));
   }
-  .card p {
+  .pay-card p {
     margin: 0;
-    transform: translateY(70%);
     color: #fff;
+    padding-top: 10px;
+    @media (min-width: 676px) {
+      transform: translateY(60%);
+      padding-top: 0px;
+    }
   }
   .swish {
     width: 40%;
@@ -670,13 +728,20 @@
   }
   .swish p {
     margin: 0;
-    transform: translateY(70%);
     color: #fff;
+    padding-top: 10px;
+    @media (min-width: 676px) {
+      transform: translateY(60%);
+      padding-top: 0px;
+    }
   }
   .swish-output {
     height: 30%;
     text-align: center;
     transform: translateY(30%);
+    @media (min-width: 676px) {
+      transform: translateY(30%);
+    }
   }
   .swish-output .name-error {
     border-bottom: 1px solid red;
@@ -686,9 +751,12 @@
     font-weight: bold;
     display: inline;
     position: absolute;
-    top: 27%;
-    left: 29%;
+    top: 43%;
+    left: 30%;
     font-size: 12px;
+    @media (max-width: 676px) {
+      top: 30%;
+    }
   }
   .card-output {
     height: 40%;
@@ -699,72 +767,96 @@
     font-weight: bold;
     display: inline;
     position: absolute;
-    top: 65%;
-    left: 6%;
+    top: 70%;
+    left: 9%;
     font-size: 12px;
+    @media (max-width: 676px) {
+      top: 73%;
+    }
   }
   .card-output .error-card-lastname {
     color: rgb(255, 1, 1);
     font-weight: bold;
     display: inline;
     position: absolute;
-    top: 65%;
+    top: 70%;
     left: 52%;
     font-size: 12px;
+    @media (max-width: 676px) {
+      top: 73%;
+    }
   }
   .card-output .error-card-cardnumber {
     color: rgb(255, 1, 1);
     font-weight: bold;
     display: inline;
     position: absolute;
-    top: 81%;
-    left: 6%;
+    top: 86%;
+    left: 9%;
     font-size: 12px;
+    @media (max-width: 676px) {
+      top: 85%;
+    }
   }
   .card-output .error-card-cardnumber-numeric {
     color: rgb(255, 1, 1);
     font-weight: bold;
     display: inline;
     position: absolute;
-    top: 78%;
-    left: 6%;
+    top: 83%;
+    left: 9%;
     font-size: 12px;
+    @media (max-width: 676px) {
+      top: 82%;
+    }
   }
   .card-output .error-card-month {
     color: rgb(255, 1, 1);
     font-weight: bold;
     display: inline;
     position: absolute;
-    top: 94%;
-    left: 22%;
+    top: 96%;
+    left: 25%;
     font-size: 12px;
+    @media (max-width: 676px) {
+      top: 92%;
+    }
   }
   .card-output .error-card-month-obl {
     color: rgb(255, 1, 1);
     font-weight: bold;
     display: inline;
     position: absolute;
-    top: 91%;
-    left: 22%;
+    top: 96%;
+    left: 25%;
     font-size: 12px;
+    @media (max-width: 676px) {
+      top: 92%;
+    }
   }
   .card-output .error-card-cvc {
     color: rgb(255, 1, 1);
     font-weight: bold;
     display: inline;
     position: absolute;
-    top: 94%;
+    top: 96%;
     left: 56%;
     font-size: 12px;
+    @media (max-width: 676px) {
+      top: 92%;
+    }
   }
   .card-output .error-card-cvc-obl {
     color: rgb(255, 1, 1);
     font-weight: bold;
     display: inline;
     position: absolute;
-    top: 91%;
-    left: 56%;
+    top: 96%;
+    left: 55%;
     font-size: 12px;
+    @media (max-width: 676px) {
+      top: 92%;
+    }
   }
   .card-name {
     height: 33%;

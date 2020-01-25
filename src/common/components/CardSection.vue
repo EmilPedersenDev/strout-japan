@@ -33,15 +33,21 @@
   };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
   .card-section {
     height: 100%;
     width: 100%;
     margin: 0;
     display: flex;
+    @media (max-width: 767px) {
+      display: block;
+    }
   }
   .home-product {
     width: 33.3333%;
+    @media (max-width: 767px) {
+      width: 100%;
+    }
   }
   .home-product img {
     height: 100%;
