@@ -9,6 +9,7 @@
         <ButtonCustom :text="'Women'" @click.native="toShop('women')"></ButtonCustom>
       </div>
     </div>
+    <div class="style-border .d-block .d-sm-none"></div>
     <div class="image-gender">
       <img
         src="https://www.weekday.com/content/dam/Weekday/startpage-content/2019/w36/w37_startpage_desktop_men_m.jpg"
@@ -50,6 +51,11 @@
     @media (max-width: 767px) {
       display: block;
     }
+    .style-border {
+      height: 20px;
+      background: #20bf6b;
+      opacity: 0.3;
+    }
   }
 
   .image-gender {
@@ -57,9 +63,6 @@
     position: relative;
     @media (max-width: 767px) {
       width: 100%;
-      &:first-child {
-        margin-bottom: 50px;
-      }
     }
   }
 

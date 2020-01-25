@@ -1,1 +1,77 @@
+/* Primära färger */
+$skåneröd: #cc3f39;
+$solgul: #eaad07;
+$solgul-alt: #f6bb0a;
+
+/* Kontrastfärger  */
+$röd: #e96952;
+$orange: #d86710;
+$solnedgång: #fc9a16;
+$magenta: #c32c80;
+$blå: #230a79;
+$lila: #6214ba;
+
+/* Trafikslag */
+$stadstrafik: #509e2f;
+$regionstrafik: #fec900;
+$pågatåg: #635ea2;
+
+/* Gråtoner */
+$vit: #ffffff;
+$nästan-svart: #2b241c; // 3 shades 4/8/16
+$varmmörk: #4d4844;
+$varm-grå: #6e6055;
+$varm-grå-alt: #807569;
+$varm-ljusgrå: #d6d3d0;
+$varmvit: #f2efe9;
+$nästan-vit: #f9f8f5;
+
+/* Colors by Ari */
+$invalid: #cc4039;
+
+/* Google Maps Colors */
+$zonGul: #ffcc00;
+$zonKantGrå: #4d4845;
+$zonValjareText: #4d4845;
+$zonValjareHover: #8c847f;
+
 @import "../../components/AppNavigation.scss";
+@import "../components/formgroup/FromGroup.scss";
+
+input,
+select,
+textarea {
+  //background-color: $nästan-vit;
+  border: 1px solid $varm-grå-alt;
+  border-radius: 4px;
+  color: $varmmörk; //$varm-grå-alt;
+  font-size: 16px;
+  width: 100%;
+  box-sizing: border-box;
+  padding-left: 16px;
+  height: 48px;
+
+  &:focus {
+    background-color: #fff;
+    //border-width: 2px;
+    border-color: $nästan-svart;
+    outline: none;
+    //padding-left: 15px;
+  }
+
+  &.invalid {
+    border-color: $invalid;
+    border-width: 2px;
+    color: $invalid;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+  }
+
+  &::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #6e6054;
+    opacity: 1; /* Firefox */
+  }
+}

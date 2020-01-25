@@ -4,6 +4,7 @@ import store from "./store/index.js";
 import router from "./router";
 import App from "./App.vue";
 import Vuelidate from "vuelidate";
+import Button from "./common/components/ButtonCustom";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
 import {
@@ -34,6 +35,7 @@ library.add(
 );
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);
+Vue.component("custom-button", Button);
 
 Vue.config.productionTip = false;
 

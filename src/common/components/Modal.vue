@@ -83,6 +83,7 @@
     text-align: center;
     height: 60%;
     justify-content: center;
+    border: none !important;
     svg {
       margin: 0 auto;
     }
@@ -104,6 +105,7 @@
     height: 20%;
     text-align: center;
     justify-content: center;
+    border: none !important;
     button {
       margin: 0 auto;
     }
