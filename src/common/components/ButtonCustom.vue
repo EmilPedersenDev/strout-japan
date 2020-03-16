@@ -36,4 +36,7 @@
     border-color: lightgray !important;
     transition: all 0.3s ease 0s;
   }
+  button:focus {
+    outline: none !important;
+  }
 </style>

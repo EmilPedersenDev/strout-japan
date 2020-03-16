@@ -6,20 +6,10 @@
         <button @click="menOrWomen('men')">Men</button>
       </div>
       <div class="container">
-        <div
-          class="product-card"
-          v-for="(product, id) in images"
-          :key="id"
-          @click="routerToProduct(product.id)"
-        >
+        <div class="product-card" v-for="(product, id) in images" :key="id" @click="routerToProduct(product.id)">
           <div class="product-image">
             <img :src="product.image" height="450px" width="300px" />
-            <img
-              class="img-hover"
-              :src="product.imageHover"
-              height="450px"
-              width="300px"
-            />
+            <img class="img-hover" :src="product.imageHover" height="450px" width="300px" />
           </div>
           <div class="product-info">
             <p style="font-weight">{{product.name}}</p>
@@ -27,6 +17,7 @@
           </div>
         </div>
       </div>
+      <div style="height: 50px;"></div>
     </div>
 
     <div class="mobile d-block d-sm-none">
@@ -35,12 +26,7 @@
         <button @click="menOrWomen('men')">Men</button>
       </div>
       <div class="mobile-container">
-        <div
-          class="mobile-product-card"
-          v-for="(product, id) in images"
-          :key="id"
-          @click="routerToProduct(product.id)"
-        >
+        <div class="mobile-product-card" v-for="(product, id) in images" :key="id" @click="routerToProduct(product.id)">
           <div class="product-mobile-image">
             <img :src="product.image" height="450px" width="300px" />
           </div>
@@ -158,8 +144,8 @@
     flex-wrap: wrap;
     max-width: 1200px;
     height: 100%;
-    margin: 0 auto;
-    margin-top: 50px;
+    margin: 50px auto 0px;
+    // margin-top: 50px;
     background-color: #f0f0f0;
   }
 

@@ -6,25 +6,10 @@
       <div class="swish">
         <img src="https://www.swish.nu/img/swish-logotype.82ec35e3.svg" alt />
         <div class="col-12 col-md-6 swish-input">
-          <form-group
-            :label="'Swish'"
-            required
-            :invalid="$v.order.swish.$invalid"
-          >
-            <input
-              type="text"
-              placeholder="Swish"
-              v-model="order.swish"
-              @blur="$v.order.swish.$touch"
-            />
-            <span
-              class="form-group-error"
-              v-if="!$v.order.swish.required && $v.order.swish.$dirty"
-            >Phone number required</span>
-            <span
-              class="form-group-error"
-              v-if="!$v.order.swish.numeric && $v.order.swish.$dirty"
-            >Only numbers</span>
+          <form-group :label="'Swish'" required :invalid="$v.order.swish.$invalid">
+            <input type="text" placeholder="Swish" v-model="order.swish" @blur="$v.order.swish.$touch" />
+            <span class="form-group-error" v-if="!$v.order.swish.required && $v.order.swish.$dirty">Phone number required</span>
+            <span class="form-group-error" v-if="!$v.order.swish.numeric && $v.order.swish.$dirty">Only numbers</span>
           </form-group>
         </div>
       </div>
@@ -34,15 +19,10 @@
     </div>
     <Modal>
       <template slot="header">
-        <font-awesome-icon
-          style="font-size:120px; color: #20bf6b; opacity: 0.7;"
-          :icon="['fas', 'question-circle']"
-        />
+        <font-awesome-icon style="font-size:120px; color: #20bf6b; opacity: 0.7;" :icon="['fas', 'question-circle']" />
       </template>
       <template slot="body">
-        <p
-          style="margin-top: 1rem; margin-bottom: 1rem"
-        >Do you want to complete the order?</p>
+        <p style="margin-top: 1rem; margin-bottom: 1rem">Do you want to complete the order?</p>
       </template>
       <template slot="footer">
         <button class="modal-button" @click="openCloseModal('yes')">Ja</button>
@@ -52,9 +32,7 @@
     <Modal v-if="showSuccessModal">
       <template slot="body">
         <p style="margin-top: 1rem; margin-bottom: 1rem">Thanks!</p>
-        <p
-          style="margin-top: 1rem; margin-bottom: 1rem"
-        >Confirmation has been sent to your mail</p>
+        <p style="margin-top: 1rem; margin-bottom: 1rem">Confirmation has been sent to your mail</p>
       </template>
     </Modal>
   </div>
@@ -155,6 +133,9 @@
     @media (min-width: 767px) {
       position: fixed;
     }
+    @media (max-width: 767px) {
+      background: #fff;
+    }
 
     h1 {
       text-align: center;
@@ -175,6 +156,7 @@
             background: linear-gradient(rgba(255, 255, 255, 0.5));
             padding: 20px;
             border-radius: 16px;
+            box-shadow: 1px 2px 9px 9px rgba(77, 72, 69, 0.25);
           }
         }
         .swish-input {
