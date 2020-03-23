@@ -1,9 +1,8 @@
 # Webshop Strout
 
 ## A site for men and women clothing. 
-```
 Live at: https://emilpedersendev.github.io/strout-japan/
-```
+
 
 ## Project setup
 ```
