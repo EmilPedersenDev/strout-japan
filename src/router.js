@@ -38,13 +38,6 @@ export default new Router({
       name: "Shop",
       component: Shop,
       props: true
-      // children: [
-      //   {
-      //     path: "/product",
-      //     name: "Products",
-      //     component: ProductDetails
-      //   }
-      // ]
     },
     {
       path: "/product",
